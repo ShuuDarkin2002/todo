@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\models\category;
+use App\models\Category;
 use App\models\Task;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -50,7 +50,7 @@ class User extends Authenticatable
     }
 
     public function categories(){
-        return $this->hasMany(category::class);
+        return $this->hasMany(Category::class);
 
     }
 

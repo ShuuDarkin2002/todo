@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\models\category;
+use App\models\Category;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,12 +19,12 @@ class Task extends Model
         'category_id'
     ];
 
-    public function user(){
+    public function users(){
         return $this->belongsTo(User::class);
     }
 
     public function category(){
-        return $this->belongsTo(category::class);
+        return $this->belongsTo(Category::class);
     }
 
 }

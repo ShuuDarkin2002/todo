@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('title')->nullable(false);
             $table->string('color')->default('#FFFFFF');
-            $table->foreignIdFor(user::class)->references('id')->on('users')->onDelete('CASCADE');
+            $table->foreignIdFor(User::class)->references('id')->on('users')->onDelete('CASCADE');
             $table->timestamps();
         });
     }
@@ -31,8 +31,8 @@ return new class extends Migration
     public function down()
     {
 
-        Schema::table('categories', function() {
-            $table->dropforeign(user::class);
+        Schema::table('categories', function(Blueprint $table) {
+            $table->dropForeignIdFor(User::class);
         });
         Schema::dropIfExists('categories');
     }

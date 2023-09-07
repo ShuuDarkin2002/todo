@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\User;
-use App\Models\category;
+use App\Models\Category;
 
 return new class extends Migration
 {
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->dateTime('due_date');
-            $table->foreignId(user::class)->references('id')->on('users')->onDelete('CASCADE');
+            $table->foreignidFor(user::class)->references('id')->on('users')->onDelete('CASCADE');
             $table->foreignidFor(category::class)->references('id')->on('categories')->onDelete('CASCADE');
             $table->timestamps();
         });
@@ -34,8 +34,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('tasks', function(Blueprint $table){
-            $table->dropForeignIdFor(user::class);
-            $table->dropForeignIdFor(category::class);
+            $table->dropForeignIdFor(User::class);
+            $table->dropForeignIdFor(Category::class);
         });
         Schema::dropIfExists('tasks');
     }
