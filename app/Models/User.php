@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\models\Category;
-use App\models\Task;
+use App\Models\Category;
+use App\Models\Task;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -46,27 +46,9 @@ class User extends Authenticatable
 
     public function tasks(){
         return $this->hasMany(Task::class);
-
     }
 
     public function categories(){
         return $this->hasMany(Category::class);
-
     }
-
-	/**
-	 * @return mixed
-	 */
-	public function getTable() {
-		return $this->table;
-	}
-
-	/**
-	 * @param mixed $table
-	 * @return self
-	 */
-	public function setTable($table): self {
-		$this->table = $table;
-		return $this;
-	}
 }
